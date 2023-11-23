@@ -6,6 +6,7 @@ import GameArea from './components/GameArea'; // Import the GameArea component
 
 function App() {
   const [apiKey, setApiKey] = useState(localStorage.getItem('openai_api_key') || '');
+  const [gptResponse, setGptResponse] = useState('');
 
   const handleApiKeySubmit = (key) => {
     localStorage.setItem('openai_api_key', key);
@@ -18,8 +19,8 @@ function App() {
         {!apiKey && <ApiKeyInput onSubmit={handleApiKeySubmit} />}
         {apiKey && (
           <>
-            <ChatInterface apiKey={apiKey} />
-            <GameArea /> {/* Include the GameArea component */}
+            <ChatInterface apiKey={apiKey} setGptResponse={setGptResponse} />
+            <GameArea gptResponse={gptResponse} /> {/* Include the GameArea component */}
           </>
         )}
       </header>

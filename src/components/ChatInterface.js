@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function ChatInterface({ apiKey }) {
+function ChatInterface({ apiKey, setGptResponse }) {
   const [inputText, setInputText] = useState('');
   const [conversation, setConversation] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!inputText.trim()) return;
+    
+    const preInstruction = "Please respond with the GPT sprite's movement in JSON format, enclosed in [JSON] and [/JSON] markers. Example: [JSON]{\"newX\": 10, \"newY\": 20}[/JSON]\n";
 
     const requestBody = {
       model: "gpt-3.5-turbo",
-      messages: conversation.concat({ role: "user", content: inputText }),
+      messages: conversation.concat({ role: "user", content: preInstruction + inputText }),
       temperature: 0.7
     };
 
@@ -33,6 +35,10 @@ function ChatInterface({ apiKey }) {
       };
 
       setConversation(conversation.concat({ role: "user", content: inputText }, newMessage));
+
+      // Parse the response to get movement instructions
+      setGptResponse(newMessage.content);
+
       setInputText('');
     } catch (error) {
       console.error('Error during API request:', error);
@@ -61,6 +67,7 @@ function ChatInterface({ apiKey }) {
     </div>
   );
 }
+  
 
 export default ChatInterface;
 
