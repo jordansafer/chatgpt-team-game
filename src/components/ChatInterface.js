@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './ChatInterface.css';
 
 function ChatInterface({ apiKey, setGptResponse }) {
   const [inputText, setInputText] = useState('');
@@ -47,23 +48,28 @@ function ChatInterface({ apiKey, setGptResponse }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="Type your message..."
-        />
-        <button type="submit">Send</button>
-      </form>
-      <div>
+    <div className="chat-container">
+      <div className="chat-history">
         {conversation.map((msg, index) => (
-          <div key={index} style={{ textAlign: msg.role === 'user' ? 'left' : 'right' }}>
-            <p><strong>{msg.role === 'user' ? 'You:' : 'ChatGPT:'}</strong> {msg.content}</p>
+          <div key={index} className={`message ${msg.role}`}>
+            <strong>{msg.role === 'user' ? 'You:' : 'ChatGPT:'}</strong> {msg.content}
           </div>
         ))}
       </div>
+      <form onSubmit={handleSubmit} className="chat-form">
+      <textarea
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        placeholder="Tell GPT what you'd like to it to do next..."
+        onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit(e);
+            }
+        }}
+        />
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 }

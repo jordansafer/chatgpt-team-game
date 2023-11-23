@@ -1,0 +1,54 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto;
+  }
+  
+  .chat-history {
+    height: 150px; /* Fixed height for chat history */
+    overflow-y: auto; /* Enable scrolling */
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    color: #333; /* Dark font color for readability */
+  }  
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .message.user {
+    text-align: left;
+  }
+  
+  .message.assistant {
+    text-align: right;
+  }
+  
+  .chat-form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  textarea {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none; /* Disable manual resizing */
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

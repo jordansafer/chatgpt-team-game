@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Sprite from './Sprite';
 
+const MAX_Y = 300;
+const MAX_X = 800;
+
 const GameArea = ({ gptResponse }) => {
   const [userPosition, setUserPosition] = useState({ x: 0, y: 0 });
-  const [gptPosition, setGptPosition] = useState({ x: 0, y: 200 }); // Assuming '200' is the bottom position
+  const [gptPosition, setGptPosition] = useState({ x: 0, y: MAX_X }); // Assuming '200' is the bottom position
 
   useEffect(() => {
     const handleKeyPress = (e) => {
@@ -14,13 +17,13 @@ const GameArea = ({ gptResponse }) => {
           newUserPosition.y = Math.max(0, newUserPosition.y - 10); // Move up and prevent moving out of game area
           break;
         case 'ArrowDown':
-          newUserPosition.y = Math.min(390, newUserPosition.y + 10); // Move down and prevent moving out of game area
+          newUserPosition.y = Math.min(MAX_Y, newUserPosition.y + 10); // Move down and prevent moving out of game area
           break;
         case 'ArrowLeft':
           newUserPosition.x = Math.max(0, newUserPosition.x - 10); // Move left and prevent moving out of game area
           break;
         case 'ArrowRight':
-          newUserPosition.x = Math.min(390, newUserPosition.x + 10); // Move right and prevent moving out of game area
+          newUserPosition.x = Math.min(MAX_X, newUserPosition.x + 10); // Move right and prevent moving out of game area
           break;
         default:
           break;
@@ -54,8 +57,8 @@ const GameArea = ({ gptResponse }) => {
       
 
     const checkWinCondition = () => {
-        const topRightButton = { x: 390, y: 0 }; // Adjust coordinates as needed
-        const bottomRightButton = { x: 390, y: 390 };
+        const topRightButton = { x: MAX_X, y: 0 }; // Adjust coordinates as needed
+        const bottomRightButton = { x: MAX_X, y: MAX_Y };
       
         const userOnTopRight = userPosition.x === topRightButton.x && userPosition.y === topRightButton.y;
         const userOnBottomRight = userPosition.x === bottomRightButton.x && userPosition.y === bottomRightButton.y;
@@ -82,8 +85,8 @@ const GameArea = ({ gptResponse }) => {
         position={gptPosition}
         setPosition={setGptPosition}
       />
-    <div className="target-button" style={{ top: 0, right: 0 }}>Top Right Target</div>
-    <div className="target-button" style={{ bottom: 0, right: 0 }}>Bottom Right Target</div>
+    <div className="target-button" style={{ top: 0, left: MAX_X }}>Top Right Target</div>
+    <div className="target-button" style={{ top: MAX_Y, left: MAX_X }}>Bottom Right Target</div>
     </div>
   );
 };
@@ -116,7 +119,10 @@ function parseMovementInstruction(responseContent) {
         // Parse the JSON string
         const instruction = JSON.parse(jsonString);
         if (instruction.newX !== undefined && instruction.newY !== undefined) {
-          return { x: parseInt(instruction.newX), y: parseInt(instruction.newY) };
+            const x = Math.max(0, Math.min(MAX_X, instruction.newX));
+            const y = Math.max(0, Math.min(MAX_Y, instruction.newY));
+            console.log('Parsed instruction', x, y);
+            return { x, y };
         }
       }
     } catch (error) {
