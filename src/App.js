@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import ApiKeyInput from './components/ApiKeyInput';
 import ChatInterface from './components/ChatInterface';
+import GameArea from './components/GameArea'; // Import the GameArea component
 
 function App() {
   const [apiKey, setApiKey] = useState(localStorage.getItem('openai_api_key') || '');
@@ -15,11 +16,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         {!apiKey && <ApiKeyInput onSubmit={handleApiKeySubmit} />}
-        {apiKey && <ChatInterface apiKey={apiKey} />}
+        {apiKey && (
+          <>
+            <ChatInterface apiKey={apiKey} />
+            <GameArea /> {/* Include the GameArea component */}
+          </>
+        )}
       </header>
     </div>
   );
 }
 
 export default App;
-
