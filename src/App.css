@@ -44,3 +44,13 @@
   background-color: #f0f0f0; /* Light gray background */
   margin-top: 20px;
 }
+
+.target-button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: red; /* or any color/style of your choice */
+  text-align: center;
+  line-height: 50px; /* to vertically center text */
+  /* Add more styling as needed */
+}

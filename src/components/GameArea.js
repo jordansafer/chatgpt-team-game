@@ -48,6 +48,28 @@ const GameArea = ({ gptResponse }) => {
         setGptPosition(gptPosition);
     }, [gptResponse]);
 
+    useEffect(() => {
+        checkWinCondition();
+    }, [userPosition, gptPosition]);
+      
+
+    const checkWinCondition = () => {
+        const topRightButton = { x: 390, y: 0 }; // Adjust coordinates as needed
+        const bottomRightButton = { x: 390, y: 390 };
+      
+        const userOnTopRight = userPosition.x === topRightButton.x && userPosition.y === topRightButton.y;
+        const userOnBottomRight = userPosition.x === bottomRightButton.x && userPosition.y === bottomRightButton.y;
+      
+        const gptOnTopRight = gptPosition.x === topRightButton.x && gptPosition.y === topRightButton.y;
+        const gptOnBottomRight = gptPosition.x === bottomRightButton.x && gptPosition.y === bottomRightButton.y;
+      
+        if ((userOnTopRight && gptOnBottomRight) || (userOnBottomRight && gptOnTopRight)) {
+          alert("You won the game!");
+        }
+      };
+      
+      
+
   return (
     <div className="game-area">
       <Sprite
@@ -60,9 +82,13 @@ const GameArea = ({ gptResponse }) => {
         position={gptPosition}
         setPosition={setGptPosition}
       />
+    <div className="target-button" style={{ top: 0, right: 0 }}>Top Right Target</div>
+    <div className="target-button" style={{ bottom: 0, right: 0 }}>Bottom Right Target</div>
     </div>
   );
 };
+
+
 
 function parseMovementInstruction(responseContent) {
     try {
