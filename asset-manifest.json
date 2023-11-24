@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/chatgpt-team-game/static/css/main.6e7f6fc1.css",
-    "main.js": "/chatgpt-team-game/static/js/main.deeaa692.js",
+    "main.css": "/chatgpt-team-game/static/css/main.cca316d2.css",
+    "main.js": "/chatgpt-team-game/static/js/main.df48e70e.js",
     "static/js/787.8c62ec5f.chunk.js": "/chatgpt-team-game/static/js/787.8c62ec5f.chunk.js",
     "index.html": "/chatgpt-team-game/index.html",
-    "main.6e7f6fc1.css.map": "/chatgpt-team-game/static/css/main.6e7f6fc1.css.map",
-    "main.deeaa692.js.map": "/chatgpt-team-game/static/js/main.deeaa692.js.map",
+    "main.cca316d2.css.map": "/chatgpt-team-game/static/css/main.cca316d2.css.map",
+    "main.df48e70e.js.map": "/chatgpt-team-game/static/js/main.df48e70e.js.map",
     "787.8c62ec5f.chunk.js.map": "/chatgpt-team-game/static/js/787.8c62ec5f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e7f6fc1.css",
-    "static/js/main.deeaa692.js"
+    "static/css/main.cca316d2.css",
+    "static/js/main.df48e70e.js"
   ]
 }
