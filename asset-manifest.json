@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/chatgpt-team-game/static/css/main.a597b278.css",
+    "main.js": "/chatgpt-team-game/static/js/main.6f3bf845.js",
+    "static/js/787.8c62ec5f.chunk.js": "/chatgpt-team-game/static/js/787.8c62ec5f.chunk.js",
+    "index.html": "/chatgpt-team-game/index.html",
+    "main.a597b278.css.map": "/chatgpt-team-game/static/css/main.a597b278.css.map",
+    "main.6f3bf845.js.map": "/chatgpt-team-game/static/js/main.6f3bf845.js.map",
+    "787.8c62ec5f.chunk.js.map": "/chatgpt-team-game/static/js/787.8c62ec5f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a597b278.css",
+    "static/js/main.6f3bf845.js"
+  ]
+}
