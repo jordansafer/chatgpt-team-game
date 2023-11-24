@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './ApiKeyInput.css';
+
 function ApiKeyInput({ onSubmit }) {
   const [inputKey, setInputKey] = useState('');
 
@@ -9,17 +11,18 @@ function ApiKeyInput({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Enter your OpenAI API Key:
-        <input
-          type="text"
-          value={inputKey}
-          onChange={(e) => setInputKey(e.target.value)}
-        />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+<form onSubmit={handleSubmit} className="api-key-form">
+  <label className="api-key-label">
+    Enter your OpenAI API Key (stored locally)
+    <input
+      type="text"
+      value={inputKey}
+      onChange={(e) => setInputKey(e.target.value)}
+      className="api-key-input"
+    />
+  </label>
+  <button type="submit" className="submit-button">Submit</button>
+</form>
   );
 }
 
