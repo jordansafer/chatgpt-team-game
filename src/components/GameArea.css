@@ -1,0 +1,29 @@
+.game-area {
+    position: relative;
+    width: 800px; /* Adjust as needed */
+    height: 400px; /* Adjust as needed */
+    border: 2px solid #000;
+    margin: 20px auto; /* Center the game area with margin */
+    background-color: #eaeaea; /* Light background color */
+  }
+
+  .game-instructions {
+    text-align: center;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+ 
+  .target-button {
+    position: absolute;
+    width: 90px; /* Match sprite size */
+    height: 90px; /* Match sprite size */
+    background-color: red; /* Or any color/style of your choice */
+    text-align: center;
+    line-height: 90px; /* Vertically center text */
+    z-index: 5; /* Lower than sprites */
+  }
+  
+  /* Add additional styling as needed */
+  

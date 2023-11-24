@@ -10,7 +10,8 @@ function ChatInterface({ apiKey, setGptResponse }) {
     event.preventDefault();
     if (!inputText.trim()) return;
     
-    const preInstruction = "Please respond with the GPT sprite's movement in JSON format, enclosed in [JSON] and [/JSON] markers. Example: [JSON]{\"newX\": 10, \"newY\": 20}[/JSON]\n";
+    const preInstruction = "Please respond with the GPT sprite's movement in JSON format, enclosed in [JSON] and [/JSON] markers. Example: [JSON]{\"newX\": 10, \"newY\": 20}[/JSON]\n"
+      + "The top left corner is 0,0 and bottom right is 800,400.";
 
     const requestBody = {
       model: "gpt-3.5-turbo",
